@@ -3,6 +3,7 @@ const updateName_useCase = require("./updateName_useCase")
 const Quit_useCase = require("./Quit_useCase")
 const removeFavCharacter_useCase = require("./removeFavCharacter_useCase")
 const uploadAvatarUseCase = require("./uploadAvatar_useCase")
+const getAllComments_useCase = require("./getAllComments_useCase")
 
 class profileController {
     async getUserInfo(req, res){
@@ -71,6 +72,16 @@ class profileController {
         }
         catch(err){
             return res.status(500).json({ error: "Failed to delete" })
+        }
+    }
+    async getComments(req, res){
+        try{
+            const userId = req.userinfo.id
+            const AccountComments = await getAllComments_useCase.execute(userId)
+            return res.status(200).json(AccountComments)
+        }
+        catch(err){
+            return res.status(500)
         }
     }
 }

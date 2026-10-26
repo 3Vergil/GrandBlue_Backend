@@ -31,6 +31,10 @@ class profileRepository{
     async removeFavCharacter(userId, charId){
         return await database.query(`DELETE FROM user_favorite WHERE user_id = $1 AND character_id = $2`, [userId, charId])
     }
+    async getComments(userId){
+        const AccountComments = await database.query(`SELECT message, chapter_id FROM chat_messages WHERE user_id = $1 `, [userId])
+        return AccountComments.rows
+    }
 }
 
 module.exports = new profileRepository

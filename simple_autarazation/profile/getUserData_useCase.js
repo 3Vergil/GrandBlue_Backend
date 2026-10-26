@@ -10,11 +10,7 @@ class getUserDataUseCase{
         }
         const AccountData = data.AccountInfo
         const ChapterId = AccountData.reading_chapter_id
-
-        const ClearChapterId = ChapterId ? String(parseFloat(ChapterId)) : null;
-
-        const VolumeData = ClearChapterId ? await profileRepository.getChapterData(ClearChapterId) : null;
-        
+        const VolumeData = ChapterId ? await profileRepository.getChapterData(ChapterId) : null;
         const FavoriteCharacters = data.Characters.map((element) => {return element.character_id})
         return {
             Account: AccountData,

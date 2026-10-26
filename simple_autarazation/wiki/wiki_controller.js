@@ -5,7 +5,7 @@ class wikiController {
     async AddFavorite(req, res){
         try{
             const character = await addFavoriteCharacter_useCase.execute(req.userinfo.id,req.body.id)      
-            return res.status(200).json({massage: "Succesfull added"})
+            return res.status(200).json({message:'Succes'})
         }
         catch(err){
             return res.status(401).json({message: err.message})

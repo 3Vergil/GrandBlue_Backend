@@ -13,7 +13,6 @@ class uploadAvatarUseCase{
             }
         })}
         AccountAvatar = await profile_repository.uploadAvatar(true, userId, avatar)
-        console.log(AccountAvatar)
         return AccountAvatar
     }
 }

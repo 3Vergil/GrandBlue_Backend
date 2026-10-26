@@ -35,7 +35,7 @@ async function Server() {
         });
     }
     catch (err) {
-        console.error("ОШИБКА ПОДКЛЮЧЕНИЯ:");
+        .error("ОШИБКА ПОДКЛЮЧЕНИЯ:");
         console.error(err.message);
     }
 }

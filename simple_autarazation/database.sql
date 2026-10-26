@@ -1,11 +1,10 @@
-create TABLE users(
+CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     nickname VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     avatar VARCHAR(255),
-    reading_chapter_id NUMERIC(5, 1),
+    reading_chapter_id INTEGER REFERENCES chapters(id),
     PageNumber INTEGER
-
 );
 create TABLE user_favorite(
     user_id INTEGER REFERENCES users(id),
@@ -29,7 +28,8 @@ CREATE TABLE manga_volumes (
 );
 
 CREATE TABLE chapters (
-    id NUMERIC(5, 1) PRIMARY KEY,
+    id SERIAL PRIMARY
+    real_id NUMERIC(5, 1),
     path VARCHAR(255) NOT NULL
 );
 
